@@ -64,10 +64,29 @@ $superheroes = [
   ], 
 ];
 
-?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (isset($_GET['query'])) {
+        // Sanitize and trim the 'query' parameter
+        $hero = trim(strip_tags($_GET['query']));
+
+        if (strlen($hero) === 0) {
+            echo json_encode($superheroes);
+            return;
+        }
+
+        // Hero filter
+        $Result = array_filter($superheroes, function ($avenger) use ($hero) {
+            return strtolower($avenger['name']) === strtolower($hero) or strtolower($avenger['alias']) === strtolower($hero);
+        });
+
+        echo json_encode(array_values($Result));
+    } else {
+        // Return Hero List
+        echo json_encode($superheroes);
+    }
+} else {
+    // If the request method is not GET, return Method Not Allowed status
+    echo json_encode(["error"=>"Method Not Allowed"]);
+}
+?>

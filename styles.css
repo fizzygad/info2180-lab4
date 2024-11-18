@@ -1,3 +1,34 @@
-body{
+.Heroes{
+    padding: auto;
+    display: flex;
+    justify-content: center;
 
+    background-color: #729fee;
+
+    color: white;
+    text-transform: uppercase;
+
+}
+body{
+    background-color:whitesmoke;
+}
+
+#heroForm {
+    display:flex ;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: 50px;
+    padding-top: 25px;
+    padding-right: 20px;
+}
+ 
+#name{
+    width: 500px;
+    height:15px;
+}
+
+#searchbtn{
+    background-color: red;
+    color: white;
+    height: 20px;
 }

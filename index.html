@@ -12,6 +12,20 @@
     <div class="Heroes">
         <h1>Avengers Character Search</h1>
     </div>
-    <button id="searchbtn">Search</button>
+    <div class="heroList">
+        <form id="heroForm" method="get">
+            <label for="name">Search by Full Name or Alias</label>
+            <div class="fields">
+                <input type="text" id="name" name="name" placeholder="e.g. Captain America or Steve Rogers"/>
+                <button type="submit" id="searchbtn">Search</button>
+            </div>
+        </form>
+        <div class="r-container">
+            <h2 class="r-heading">RESULT</h2>
+            <hr class="r-divider"/>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
