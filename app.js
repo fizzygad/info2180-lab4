@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Handle errors if the fetch request is not successful
         if (!HeroDesc.ok) {
-            result.innerHTML = "Superhero not found"
-            return;
+            const notfound = document.createTextNode("Superhero Not Found");
+            result.replaceChild(notfound, result.firstChild);
         }
         const wiki = await HeroDesc.json();
 
